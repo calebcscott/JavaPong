@@ -12,6 +12,20 @@ public class Ball {
 		xVel = -2;
 		yVel = 1;
 	}
+	
+	public double getRandomSpeed() {
+		return (Math.random() * 3 + 2);
+	}
+	
+	public int getRandomDirection() {
+		int rand = (int)(Math.random() * 2);
+		if (rand == 1) 
+			return 1;
+		else
+			return -1;
+	}
+	
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.fillOval((int)x-10, (int)y-10, 20, 20);
