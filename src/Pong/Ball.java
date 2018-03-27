@@ -9,8 +9,8 @@ public class Ball {
 	public Ball() {
 		x = 380;
 		y = 250;
-		xVel = -2;
-		yVel = 1;
+		xVel = getRandomSpeed() * getRandomDirection();
+		yVel = getRandomSpeed() * getRandomDirection();
 	}
 	
 	public double getRandomSpeed() {
