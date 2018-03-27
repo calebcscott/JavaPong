@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Tennis extends Applet implements Runnable, KeyListener {
-	final int WIDTH = 700, HEIGHT = 500;
+	final int WIDTH = 1920, HEIGHT = 1080;
 	Thread thread;
 	HumanPaddle p1;
 	Ball ball;
@@ -16,6 +16,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	boolean GameStarted;
 	Graphics gfx;
 	Image img;
+	TennisObject testpaddle;
 	
 	
 	public void init() {
@@ -25,6 +26,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		ball = new Ball();
 		p1 = new HumanPaddle(1);
 		p2 = new AIPaddle(2, ball);
+		testpaddle = new TestPaddle(20, 210, ID.Player);
 		img = createImage(WIDTH, HEIGHT);
 		gfx = img.getGraphics();
 		
@@ -35,6 +37,8 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		gfx.setColor(Color.BLACK);
 		gfx.fillRect(0, 0, WIDTH, HEIGHT);
+		testpaddle.draw(gfx);
+		/*
 		if(ball.getX() < -10 || ball.getX() > 710) {
 			gfx.setColor(Color.red);
 			gfx.drawString("Game Over", WIDTH/2 -20, HEIGHT/2);
@@ -50,6 +54,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			gfx.drawString("Tennis", 340, 100);
 			gfx.drawString("PressEnter to Begin...", 310, 130);
 		}
+		*/
 		g.drawImage(img, 0, 0, this);
 	}
 	
@@ -64,10 +69,10 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		
 		for(;;) {
 			if (GameStarted) {
-				p1.move();
-				p2.move();
-				ball.move();
-				ball.checkPaddleCollision(p1, p2);
+				//p1.move();
+				//p2.move();
+				//ball.move();
+				//ball.checkPaddleCollision(p1, p2);
 			}
 			repaint();
 			try {
@@ -85,10 +90,10 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_UP ) {
-			p1.setUpAccel(true);
+			//p1.setUpAccel(true);
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			p1.setDownAccel(true);
+			//p1.setDownAccel(true);
 		}
 		else if (e.getKeyCode() ==KeyEvent.VK_ENTER) {
 			GameStarted = true;
@@ -100,10 +105,10 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		// TODO Auto-generated method stub
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP ) {
-			p1.setUpAccel(false);
+			//p1.setUpAccel(false);
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			p1.setDownAccel(false);
+			//p1.setDownAccel(false);
 		}
 		
 	}
