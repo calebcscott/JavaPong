@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Tennis extends Applet implements Runnable, KeyListener {
-	final int WIDTH = 1920, HEIGHT = 1080;
+	final int WIDTH = 700, HEIGHT = 500;
 	Thread thread;
 	HumanPaddle p1;
 	Ball ball;
@@ -17,6 +17,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	Graphics gfx;
 	Image img;
 	TennisObject testpaddle;
+	Handler Handler = new Handler();
 	
 	
 	public void init() {
@@ -27,6 +28,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		p1 = new HumanPaddle(1);
 		p2 = new AIPaddle(2, ball);
 		testpaddle = new TestPaddle(20, 210, ID.Player);
+		Handler.createObject("player");
 		img = createImage(WIDTH, HEIGHT);
 		gfx = img.getGraphics();
 		
@@ -37,7 +39,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		gfx.setColor(Color.BLACK);
 		gfx.fillRect(0, 0, WIDTH, HEIGHT);
-		testpaddle.draw(gfx);
+		Handler.paint(gfx);
 		/*
 		if(ball.getX() < -10 || ball.getX() > 710) {
 			gfx.setColor(Color.red);
