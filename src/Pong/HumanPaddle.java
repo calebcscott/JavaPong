@@ -21,14 +21,12 @@ public class HumanPaddle implements Paddle {
 	
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
 		g.setColor(Color.white);
 		g.fillRect(x, (int)y, 20, 80);
 	}
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
 		if(upAccel) {
 			yVel -= 2;
 		}
@@ -58,7 +56,6 @@ public class HumanPaddle implements Paddle {
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int)y;
 	}
 	

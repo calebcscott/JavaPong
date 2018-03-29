@@ -25,9 +25,9 @@ public abstract class TennisObject {
 		this.x2 = x + 20;
 	}
 	
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
-		this.y2 =  y + 80;
+		this.y2 = (int)(y + 80);
 	}
 	
 	public int getX() {

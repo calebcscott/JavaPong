@@ -7,12 +7,11 @@ public class TestPaddle extends TennisObject {
 
 	public TestPaddle(int x, int y, ID id) {
 		super(x, y, id);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
 		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, 20, 80);
 		g.setColor(Color.red);
@@ -25,7 +24,34 @@ public class TestPaddle extends TennisObject {
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
+		if(upAccel) {
+			yVel -= 2;
+		}
+		else if(downAccel) {
+			yVel += 2;
+		}
+		
+		else if(!upAccel && !downAccel) {
+			yVel  *= GRAVITY;
+		}
+		
+		if(yVel >= 3) {
+			yVel = 3;
+		}
+		else if(yVel <= -3) {
+			yVel = -3;
+		}
+		
+		//y += yVel;
+		setY(y + yVel);
+		
+		
+		if (y < 0) {
+			setY(1);
+		}
+		if (y > 420) {
+			setY(419);
+		}
 		
 	}
 	

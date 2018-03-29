@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 public class Handler {
 	LinkedList<TennisObject> objects = new LinkedList<TennisObject>();
+	TennisObject temp;
 	
 	public void paint(Graphics g) {
 		for(int i =0; i < objects.size();i++) {
@@ -15,7 +16,10 @@ public class Handler {
 	}
 	
 	public void move() {
-		
+		for(int i =0; i < objects.size();i++) {
+			TennisObject temp = objects.get(i);
+			temp.move();
+		}
 	}
 	
 	public void addObject(TennisObject object) {
@@ -26,10 +30,14 @@ public class Handler {
 		this.objects.remove(object);
 	}
 	
-	public void createObject(String type) {
-		if (type == "player") {
-			TennisObject test = new TestPaddle(20, 210, ID.Player);
-			addObject(test);
+	public TennisObject createObject(ID id) {
+		if (id == ID.Player) {
+			temp = new TestPaddle(20, 210, id);
+			
+		} else {
+			temp = new TestPaddle(660,210, ID.AI);
 		}
+		addObject(temp);
+		return temp;
 	}
 }

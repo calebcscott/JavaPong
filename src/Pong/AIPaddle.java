@@ -23,14 +23,12 @@ public class AIPaddle implements Paddle {
 	
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
 		g.setColor(Color.white);
 		g.fillRect(x, (int)y, 20, 80);
 	}
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
 		
 		y = ball.getY() -40;
 		
@@ -44,7 +42,6 @@ public class AIPaddle implements Paddle {
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int)y;
 	}
 	

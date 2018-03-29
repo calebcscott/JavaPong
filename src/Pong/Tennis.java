@@ -17,6 +17,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	Graphics gfx;
 	Image img;
 	TennisObject testpaddle;
+	TennisObject player;
 	Handler Handler = new Handler();
 	
 	
@@ -27,8 +28,8 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 		ball = new Ball();
 		p1 = new HumanPaddle(1);
 		p2 = new AIPaddle(2, ball);
-		testpaddle = new TestPaddle(20, 210, ID.Player);
-		Handler.createObject("player");
+		testpaddle = Handler.createObject(ID.AI);
+		player = Handler.createObject(ID.Player);
 		img = createImage(WIDTH, HEIGHT);
 		gfx = img.getGraphics();
 		
@@ -67,10 +68,10 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		
 		for(;;) {
 			if (GameStarted) {
+				Handler.move();
 				//p1.move();
 				//p2.move();
 				//ball.move();
@@ -80,7 +81,6 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			
 			}
@@ -90,12 +90,13 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_UP ) {
 			//p1.setUpAccel(true);
+			player.setUpAccel(true);
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			//p1.setDownAccel(true);
+			player.setDownAccel(true);
 		}
 		else if (e.getKeyCode() ==KeyEvent.VK_ENTER) {
 			GameStarted = true;
@@ -104,20 +105,20 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP ) {
 			//p1.setUpAccel(false);
+			player.setUpAccel(false);
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			//p1.setDownAccel(false);
+			player.setDownAccel(false);
 		}
 		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 }
